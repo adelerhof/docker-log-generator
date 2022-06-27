@@ -10,11 +10,12 @@ ADD gen-files.sh /root/gen-files.sh
 RUN chmod 0644 /root/gen-files.sh
 
 #Install Cron
-RUN apt-get update
-RUN apt-get -y install cron
+RUN apt-get update && apt-get install -y cron \
+    bash \
+    bash-completion \
+    ca-certificates \
+    vim
+COPY crontab /etc/cron.d/crontab
+RUN chmod 0644 /etc/cron.d/crontab && crontab /etc/cron.d/crontab
 
-# Add the cron job
-RUN crontab -l | { cat; echo "/5 * * * * bash /root/gen-files.sh"; } | crontab -
-
-# Run the command on container startup
-CMD cron
+ENTRYPOINT bash
