@@ -1,1 +1,1 @@
-*/5 * * * * /usr/bin/sh /root/gen-files.sh
+*/5 * * * * /usr/bin/bash /root/gen-files.sh
