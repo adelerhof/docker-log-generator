@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.authors="blaataap"
 ADD gen-files.sh /root/gen-files.sh
 
 # Give execution rights on the cron scripts
-RUN chmod 0644 /root/gen-files.sh
+RUN chmod 0755 /root/gen-files.sh
 
 #Install Cron
 RUN apt-get update && apt-get install -y cron \
